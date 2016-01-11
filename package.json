@@ -1,0 +1,28 @@
+{
+  "name": "gulp-filter-size",
+  "version": "1.0.0",
+  "description": "gulp plugin for filtering files by size",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creedencewright/gulp-filter-size.git"
+  },
+  "keywords": [
+    "gulp",
+    "size",
+    "filter"
+  ],
+  "author": "Denis Smirnov <smv.denis@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/creedencewright/gulp-filter-size/issues"
+  },
+  "homepage": "https://github.com/creedencewright/gulp-filter-size#readme",
+  "dependencies": {
+    "stream-counter": "^1.0.0",
+    "through2": "^2.0.0"
+  }
+}
