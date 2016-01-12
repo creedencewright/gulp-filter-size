@@ -3,19 +3,16 @@
 var through       = require('through2');
 var StreamCounter = require('stream-counter');
 
-var DEFAULT_MIN_SIZE = 0;
-var DEFAULT_MAX_SIZE = 1000;
-
 module.exports = function(sizeLimit) {
-    var sizeMin, sizeMax;
+    var sizeMin = 0, sizeMax;
 
     if (typeof sizeLimit === 'number') {
         sizeMax = sizeLimit;
     } else if (typeof sizeLimit === 'object') {
-        sizeMin = sizeLimit.min || DEFAULT_MIN_SIZE;
-        sizeMax = sizeLimit.max || DEFAULT_MAX_SIZE;
+        sizeMin = sizeLimit.min || sizeMin;
+        sizeMax = sizeLimit.max || 0;
     } else {
-        sizeMax = DEFAULT_MAX_SIZE;
+        return next(null, file);
     }
 
     return through.obj(function(file, encoding, next) {
@@ -38,5 +35,9 @@ module.exports = function(sizeLimit) {
 };
 
 function _check(min, max, size) {
+    if (!max || min >= max) {
+        return size >= min;
+    };
+
     return size >= min && size <= max;
 }
